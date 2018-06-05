@@ -13,7 +13,7 @@ class User {
     }
     getDate() {
         const date = new Date(this.dob).toDateString().split(" ");
-        const newDate =`${date[1]} ${date[2]} ${date[3].slice(2)}`
+        const newDate =`${date[1]} ${date[2]} ${date[3].slice(2)}`;
         return newDate; 
     }
 }
