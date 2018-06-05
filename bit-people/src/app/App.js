@@ -1,12 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
+import { Header } from './partials/Header'
+import { Footer } from './partials/Footer'
+import { fetchUsers } from '../service/userService';
 
-class App extends Component {
-  render() {
-    return (
-     
-    );
-  }
+
+const App = () => {
+  return (
+    <React.Fragment>
+      <Header headline="Users React" />
+      <Footer />
+    </React.Fragment>
+
+  );
 }
 
-export default App;
+
+export { App };
