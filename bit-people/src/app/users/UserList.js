@@ -1,34 +1,12 @@
-import React, { Component } from 'react';
-import { fetchUsers } from '../../service/userService';
+import React from 'react';
 import { UserItem } from './UserItem';
 import { UserCard } from './UserCard';
 
 
-export class UserList extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            users: []
-        };
-    }
+export const UserList = (props) => {
+        
 
-    componentDidMount() {
-        this.loadData();
-    }
-
-    loadData() {
-
-        fetchUsers()
-            .then(users => {
-                console.log(users);
-
-                this.setState({
-                    users
-                })
-            })
-    }
-
-    renderListItems(users) {
+    const renderListItems = (users) => {
         return (
             <div className="row">
                 {users.map((user, index) => {
@@ -38,7 +16,7 @@ export class UserList extends Component {
         )
     }
 
-    renderCardItems(users) {
+    const renderCardItems = (users) => {
         return (
             <div className="row">
                 {users.map((user, index) => {
@@ -48,22 +26,17 @@ export class UserList extends Component {
         )
     }
 
-    render() {
-        const userList = this.state.users;
-        const { viewMode } = this.props;
+    
+    const { viewMode, users } = props;
         return (
             <div className="container">
                 <div className="row">
                     {
                         viewMode
-                            ? this.renderCardItems(userList)
-                            : this.renderListItems(userList)
+                            ? renderCardItems(users)
+                            : renderListItems(users)
                     }
                 </div>
             </div>
         )
     }
-
-}
-
-

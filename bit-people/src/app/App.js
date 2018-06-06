@@ -1,16 +1,33 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Header } from './partials/Header'
-import { Footer } from './partials/Footer'
-// import { Main } from './partials/Main';
+import { Header } from './partials/Header';
+import { Footer } from './partials/Footer';
 import { UserList } from './users/UserList';
+import { fetchUsers } from '.././service/userService';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listView: true
+      listView: true,
+      users: []
     };
+  }
+
+
+
+  componentDidMount() {
+    this.loadData();
+  }
+
+  loadData = () => {
+
+    fetchUsers()
+      .then(users => {
+        this.setState({
+          users
+        })
+      })
   }
 
   checkListView = (view) => {
@@ -24,9 +41,8 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header headline="React Users" layout={this.checkListView} viewMode={this.state.listView} />
-        {/* <Main viewMode={this.state.listView}/> */}
-        <UserList viewMode={this.state.listView} />
+        <Header headline="React Users" layout={this.checkListView} viewMode={this.state.listView} loadData={this.loadData} />
+        <UserList viewMode={this.state.listView} users={this.state.users} />
         <Footer />
       </React.Fragment>
 
