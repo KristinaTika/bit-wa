@@ -1,13 +1,13 @@
 import React from 'react';
 
 export const UserCard = (props) => {
-    const { name, picture } = props.user;
+    const { name, photo } = props.user;
     return (
 
         <div className="col s4">
             <div className="card">
                 <div className="card-image">
-                    <img src={picture} alt="user-img" />
+                    <img src={photo} alt="user-img" />
                     <span className="card-title">{name}</span>
                 </div>
                 <div className="card-content">

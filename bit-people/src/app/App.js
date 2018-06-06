@@ -1,19 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import { Header } from './partials/Header'
 import { Footer } from './partials/Footer'
+// import { Main } from './partials/Main';
 import { UserList } from './users/UserList';
 
-const App = (props) => {
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      listView: true
+    };
+  }
 
-  return (
-    <React.Fragment>
-      <Header headline="Users React" />
-      <UserList />
-      <Footer />
-    </React.Fragment>
+  checkListView = (view) => {
+    if (view === false) {
+      this.setState({ listView: true })
+    } else {
+      this.setState({ listView: false })
+    }
+  }
 
-  );
+  render() {
+    return (
+      <React.Fragment>
+        <Header headline="React Users" layout={this.checkListView} viewMode={this.state.listView} />
+        {/* <Main viewMode={this.state.listView}/> */}
+        <UserList viewMode={this.state.listView} />
+        <Footer />
+      </React.Fragment>
+
+    );
+  }
 }
-
 export { App };
