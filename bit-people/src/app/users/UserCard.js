@@ -2,7 +2,6 @@ import React from 'react';
 
 export const UserCard = (props) => {
     const { name, photo, gender } = props.user;
-    console.log(gender);
     
 
     const pinkColor = () => {

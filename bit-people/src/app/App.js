@@ -4,13 +4,15 @@ import { Header } from './partials/Header';
 import { Footer } from './partials/Footer';
 import { UserList } from './users/UserList';
 import { fetchUsers } from '.././service/userService';
+import { Search } from './partials/Search';
 
-class App extends Component {
+export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       listView: true,
-      users: []
+      users: [],
+      inputValue: ""
     };
   }
 
@@ -22,7 +24,7 @@ class App extends Component {
   loadData = () => {
 
     fetchUsers()
-      .then(users => {
+      .then((users) => {
         this.setState({
           users
         })
@@ -39,15 +41,22 @@ class App extends Component {
     }
   }
 
+  searchInput = (event) => {
+    this.setState({
+      inputValue: event.target.value
+    })
+  }
+
   render() {
     return (
       <React.Fragment>
         <Header headline="React Users" layout={this.checkListView} viewMode={this.state.listView} loadData={this.loadData} />
-        <UserList viewMode={this.state.listView} users={this.state.users} />
+        <Search searchInput={this.searchInput} inputValue={this.state.inputValue} />
+        <UserList viewMode={this.state.listView} users={this.state.users} inputValue={this.state.inputValue} />
         <Footer />
       </React.Fragment>
 
     );
   }
 }
-export { App };
+

@@ -5,25 +5,52 @@ import { UserCard } from './UserCard';
 
 export const UserList = (props) => {
 
+    const { users, inputValue } = props;
+
+    const filterUsers = (users, value) => {
+        return users.filter((user, index) => user.name.includes(value));
+    }
 
     const renderListItems = (users) => {
-        return (
-            <div className="row">
-                {users.map((user, index) => {
-                    return <UserItem key={index} user={user} />
-                })}
-            </div>
-        )
+        if (inputValue === "") {
+            return (
+                <div className="row">
+                    {users.map((user, index) => {
+                        return <UserItem key={index} user={user} />
+                    })}
+                </div>
+            )
+        } else {
+            return (
+                <div className="row">
+                    {filterUsers(users, inputValue)
+                        .map((user, index) => {
+                            return <UserItem key={index} user={user} />
+                        })}
+                </div>
+            )
+        }
     }
 
     const renderCardItems = (users) => {
-        return (
-            <div className="row">
-                {users.map((user, index) => {
-                    return <UserCard key={index} user={user} />
-                })}
-            </div>
-        )
+        if (inputValue === "") {
+            return (
+                <div className="row">
+                    {users.map((user, index) => {
+                        return <UserCard key={index} user={user} />
+                    })}
+                </div>
+            )
+        } else {
+            return (
+                <div className="row">
+                    {filterUsers(users, inputValue)
+                        .map((user, index) => {
+                            return <UserCard key={index} user={user} />
+                        })}
+                </div>
+            )
+        }
     }
 
     const displayLayout = (users) => {
@@ -33,10 +60,9 @@ export const UserList = (props) => {
             ? renderListItems(users)
             : renderCardItems(users)
     }
-    
 
 
-    const { users } = props;
+
     return (
         <div className="container">
             <div className="row">
