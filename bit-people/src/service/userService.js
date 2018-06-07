@@ -9,7 +9,7 @@ export const fetchUsers = () => {
         .then((res) => {
             const userData = res.results;
             return userData.map((user) => {
-                return new User(user.name.first, user.email, user.dob, user.picture.large)
+                return new User(user.name.first, user.email, user.dob, user.picture.large, user.gender)
             })
         })
         .catch((error) => {

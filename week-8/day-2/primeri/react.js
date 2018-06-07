@@ -263,7 +263,6 @@ class UserCard extends Component {
         listView: true
     };
 
-    users = ["pera", "zika", "mika", "laza"];
 
     handleChange = (event) => {
         console.log(this);
@@ -289,6 +288,7 @@ class UserCard extends Component {
         }
     }
     setListView("grid");
+    
     render() {
         const { inputValue } = this.state;
         return (

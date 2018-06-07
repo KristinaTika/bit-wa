@@ -1,9 +1,10 @@
 class User {
-    constructor(name, email, dob, photo) {
+    constructor(name, email, dob, photo, gender) {
         this.name = name;
         this.email = email;
         this.dob = dob;
         this.photo = photo;
+        this.gender = gender;
     }
 
     getUserEmail() {

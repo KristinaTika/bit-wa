@@ -1,11 +1,23 @@
 import React from 'react';
 
 export const UserCard = (props) => {
-    const { name, photo } = props.user;
+    const { name, photo, gender } = props.user;
+    console.log(gender);
+    
+
+    const pinkColor = () => {
+        if (gender === "female") {
+            return "card pink lighten-5"
+        } else {
+            return "card"
+        
+        }
+    }
+
     return (
 
         <div className="col s4">
-            <div className="card">
+            <div className={pinkColor()}>
                 <div className="card-image">
                     <img src={photo} alt="user-img" />
                     <span className="card-title">{name}</span>

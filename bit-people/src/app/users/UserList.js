@@ -4,7 +4,7 @@ import { UserCard } from './UserCard';
 
 
 export const UserList = (props) => {
-        
+
 
     const renderListItems = (users) => {
         return (
@@ -26,17 +26,22 @@ export const UserList = (props) => {
         )
     }
 
-    
-    const { viewMode, users } = props;
-        return (
-            <div className="container">
-                <div className="row">
-                    {
-                        viewMode
-                            ? renderCardItems(users)
-                            : renderListItems(users)
-                    }
-                </div>
-            </div>
-        )
+    const displayLayout = (users) => {
+        const showStorageView = localStorage.getItem("listView");
+
+        return showStorageView === "true"
+            ? renderListItems(users)
+            : renderCardItems(users)
     }
+    
+
+
+    const { users } = props;
+    return (
+        <div className="container">
+            <div className="row">
+                {displayLayout(users)}
+            </div>
+        </div>
+    )
+}
