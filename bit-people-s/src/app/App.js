@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Switch, Route } from "react-router-dom";
+import {Home} from "./common/Home";
+
 
 export class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-       
-      </div>
+      <Switch>
+        <Route path={"/"} component={Home} />
+      </Switch>
     );
   }
 }
