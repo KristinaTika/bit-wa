@@ -288,7 +288,7 @@ class UserCard extends Component {
         }
     }
     setListView("grid");
-    
+
     render() {
         const { inputValue } = this.state;
         return (
@@ -318,7 +318,7 @@ class UserCard extends Component {
 
         const Button = (props) => {
 
-            return <button onCLick={() =>{props.whenClicked(props.text)}}> {props.text}</button>
+            return <button onCLick={() => { props.whenClicked(props.text) }}> {props.text}</button>
         }
 
 
@@ -336,3 +336,38 @@ class UserCard extends Component {
                 </div>
             )
         }
+
+        ///////////////////////////
+        ////////////////////////
+        this.setState({ [event.target.name]: event.target.value }); // evaluira se na name ili content, u zavisnosti na sta smo kliknuli;
+
+
+        /////////////////////////////////////////////
+        /////////////////////////////////////////////
+        // udjemo u index.js fajl
+
+        import { HashRouter } from "react-router-dom";
+
+        ReeacDom.render(
+            <HashRouter>
+                <App />
+            </HashRouter >,
+            document.getElementById("root")
+        );
+        registerServiceWorker();
+
+////////////////////////////////
+////////////////////////
+//udjemo u applicationCache.js fajl
+
+import {Route} from "react-router-dom";
+
+return (
+    <React.Fragment>
+        <Header />
+        <Route path="/" component={SearchBar} />
+
+
+        </React.Fragment>
+
+)
